@@ -17,8 +17,20 @@ body {
   display: flex;
   place-items: center;
 }
+
 * {
   box-sizing: border-box;
+}
+
+input {
+  width: 100%;
+  height: 45px;
+  outline: none;
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 16px;
+  background-color: transparent;
 }
 
 #root {
@@ -36,5 +48,8 @@ body {
   }
   button {
     background-color: #f9f9f9;
+  }
+  input {
+    border-color: #ccc;
   }
 }

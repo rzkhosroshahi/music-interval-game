@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Tabs } from "../tabs";
 import { NoteIntervals } from "../note-intervals";
 import { TwoNotes } from "../two-notes";
@@ -19,6 +19,11 @@ const games = [
 export function Games() {
     const [tab, setTab] = useState<string>(games[0].name);
     const [hintVisible, setHintVisible] = useState(false);
+    const [fileName, setFileName] = useState('');
+
+    const handleSetFileName = useCallback((arg: string) => {
+        setFileName(arg);
+    }, []);
 
     return (
         <div className={style.container}>
@@ -32,7 +37,11 @@ export function Games() {
                     key={name}
                     style={{ display: tab === name ? 'flex' : 'none' }}
                 >
-                    <Component onHintClick={(visible) => setHintVisible(visible)} />
+                    <Component
+                        onHintClick={(visible) => setHintVisible(visible)}
+                        fileName={fileName}
+                        setAudioFileName={handleSetFileName}
+                    />
                 </div>
             ))}
             <Piano visible={hintVisible} />

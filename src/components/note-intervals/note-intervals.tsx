@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { QuestionBar } from "../question-bar";
 import { Message } from "../message";
 import { randomArrayPick, randomObjPick } from "../../utils/utils";
@@ -7,19 +7,30 @@ import { NoteIntervalsProps } from "./note-intervals.types";
 import style from './style.module.css';
 
 const GAME_NAME = 'NoteIntervals';
-
-export const NoteIntervals = ({ onHintClick }: NoteIntervalsProps) => {
+export const NoteIntervals = ({ onHintClick, fileName, setAudioFileName }: NoteIntervalsProps) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [from, setFrom] = useState(randomArrayPick(notes));
     const [to, setTo] = useState<keyof typeof intervals>(randomObjPick(intervals));
     const [msg, setMsg] = useState('');
-    const [msgType, setMsgType] = useState<'success'|'failed'>('success');
+    const [msgType, setMsgType] = useState<'success' | 'failed'>('success');
     const [score, setScore] = useState(0);
     const highScore = localStorage.getItem(GAME_NAME) ?? 0;
 
+    useEffect(() => {
+        const finalNote = calcInterval(from, to);
+        setAudioFileName(`${from}${finalNote}`.toLowerCase());
+    }, [from , to, setAudioFileName]);
+
     const resetForm = () => {
-        setFrom(randomArrayPick(notes));
-        setTo(randomObjPick(intervals));
+        let fromNote = randomArrayPick(notes);
+        let toInterval = randomObjPick(intervals);
+
+        while (`${fromNote}${toInterval}` === `${from}${to}`) {
+            fromNote = randomArrayPick(notes);
+            toInterval = randomObjPick(intervals);
+        }
+        setFrom(fromNote);
+        setTo(toInterval);
         if (inputRef.current) inputRef.current.value = '';
     }
 
@@ -29,7 +40,7 @@ export const NoteIntervals = ({ onHintClick }: NoteIntervalsProps) => {
                 localStorage.setItem(GAME_NAME, score.toString());
             }
             return;
-        } 
+        }
         localStorage.setItem(GAME_NAME, score.toString());
     }
 
@@ -52,7 +63,7 @@ export const NoteIntervals = ({ onHintClick }: NoteIntervalsProps) => {
     }
     return (
         <div className={style.container}>
-            <QuestionBar from={from} to={to} onHintClick={onHintClick} />
+            <QuestionBar from={from} to={to} onHintClick={onHintClick} fileName={fileName} />
             <input
                 ref={inputRef}
                 className={style.input}

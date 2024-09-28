@@ -1,5 +1,6 @@
 export type QuestionBarProps = {
     from: string,
     to: string,
-    onHintClick : (visible: boolean) => void;
+    fileName: string,
+    onHintClick: (visible: boolean) => void;
 }

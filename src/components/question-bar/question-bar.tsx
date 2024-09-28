@@ -1,7 +1,8 @@
+import { AudioPlayer } from '../audio-player';
 import { QuestionBarProps } from './question-bar.types';
 import style from './style.module.css';
 
-export const QuestionBar = ({ from, to, onHintClick }: QuestionBarProps) => {
+export const QuestionBar = ({ from, to, fileName, onHintClick }: QuestionBarProps) => {
     return (
         <div className={style.container}>
             <div className={style.questionBox}>
@@ -12,7 +13,8 @@ export const QuestionBar = ({ from, to, onHintClick }: QuestionBarProps) => {
                     To: <span className={style.text}>{to}</span>
                 </div>
             </div>
-            <div>
+            <div className={style.playerContainer}>
+                <AudioPlayer className={style.player} fileName={fileName} />
                 <span
                     className={style.hint}
                     onMouseDown={() => onHintClick(true)}

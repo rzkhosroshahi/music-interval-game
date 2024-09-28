@@ -22,3 +22,12 @@
 .activeTab {
     background-color: white;
 }
+
+@media (prefers-color-scheme: dark) {
+    .container {
+        background-color: #909090;
+    }
+    .activeTab {
+        background-color: rgb(105, 105, 105);
+    }
+}
