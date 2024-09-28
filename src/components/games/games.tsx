@@ -16,6 +16,7 @@ const games = [
     }
 ];
 
+
 export function Games() {
     const [tab, setTab] = useState<string>(games[0].name);
     const [hintVisible, setHintVisible] = useState(false);
@@ -30,22 +31,25 @@ export function Games() {
             <Tabs
                 tabList={games}
                 activeTab={tab}
-                onClick={(tabName) => setTab(tabName)}
+                onClick={(tabname) => setTab(tabname)}
             />
             {games.map(({ name, Component }) => (
-                <div
-                    key={name}
-                    style={{ display: tab === name ? 'flex' : 'none' }}
-                >
-                    <Component
-                        onHintClick={(visible) => setHintVisible(visible)}
-                        fileName={fileName}
-                        setAudioFileName={handleSetFileName}
-                    />
+                <div key={name}>
+                    {
+                        tab === name &&
+                        <Component
+                            onHintClick={(visible) => setHintVisible(visible)}
+                            fileName={fileName}
+                            setAudioFileName={handleSetFileName}
+                        />
+                    }
                 </div>
             ))}
             <Piano visible={hintVisible} />
         </div>
     );
 };
+
+
+
 
