@@ -14,7 +14,7 @@ export const QuestionBar = ({ from, to, fileName, onHintClick }: QuestionBarProp
                 </div>
             </div>
             <div className={style.playerContainer}>
-                <AudioPlayer className={style.player} fileName={fileName} />
+                <AudioPlayer fileName={fileName} />
                 <span
                     className={style.hint}
                     onMouseDown={() => onHintClick(true)}
