@@ -64,7 +64,12 @@ export const TwoNotes = ({ onHintClick, setAudioFileName, fileName }: TwoNotesPr
 
     return (
         <div className={style.container}>
-            <QuestionBar from={from} to={to} onHintClick={onHintClick} fileName={fileName} />
+            <QuestionBar
+                from={from}
+                to={to}
+                onHintClick={onHintClick}
+                fileName={fileName}
+            />
             <input
                 ref={inputRef}
                 className={style.input}

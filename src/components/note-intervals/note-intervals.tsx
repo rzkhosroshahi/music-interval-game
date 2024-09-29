@@ -19,7 +19,7 @@ export const NoteIntervals = ({ onHintClick, fileName, setAudioFileName }: NoteI
     useEffect(() => {
         const finalNote = calcInterval(from, to);
         setAudioFileName(`${from}${finalNote}`.toLowerCase());
-    }, [from , to, setAudioFileName]);
+    }, [from, to, setAudioFileName]);
 
     const resetForm = () => {
         let fromNote = randomArrayPick(notes);
@@ -63,7 +63,12 @@ export const NoteIntervals = ({ onHintClick, fileName, setAudioFileName }: NoteI
     }
     return (
         <div className={style.container}>
-            <QuestionBar from={from} to={to} onHintClick={onHintClick} fileName={fileName} />
+            <QuestionBar
+                from={from}
+                to={to}
+                onHintClick={onHintClick}
+                fileName={fileName}
+            />
             <input
                 ref={inputRef}
                 className={style.input}

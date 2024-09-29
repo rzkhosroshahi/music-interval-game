@@ -34,7 +34,7 @@ export function Games() {
                 onClick={(tabname) => setTab(tabname)}
             />
             {games.map(({ name, Component }) => (
-                <div key={name}>
+                <>
                     {
                         tab === name &&
                         <Component
@@ -43,7 +43,7 @@ export function Games() {
                             setAudioFileName={handleSetFileName}
                         />
                     }
-                </div>
+                </>
             ))}
             <Piano visible={hintVisible} />
         </div>
