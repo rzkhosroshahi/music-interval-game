@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rollup/plugin-alias": "^5.1.1",
+    "@types/node": "^22.7.4",
+    "eslint-import-resolver-alias": "^1.1.2",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -29,5 +32,9 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:rzkhosroshahi/music-interval-game.git",
+  "author": "rzkhosroshahi <rzkhkosroshahi@gmail.com>",
+  "license": "MIT"
 }

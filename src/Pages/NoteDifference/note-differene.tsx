@@ -1,6 +1,6 @@
 import { Fragment, useCallback, useState } from "react";
 import { Tabs } from "@/components/tabs";
-import { Piano } from "@/components/Piano";
+import { Piano } from "@/components/piano";
 import { NoteIntervals } from "./components/note-intervals";
 import { TwoNotes } from "./components/two-notes";
 import style from './note-differene.module.css';

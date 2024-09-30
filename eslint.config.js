@@ -24,5 +24,12 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+    settings: {
+      'import/resolver': {
+        alias: [
+          ['@', './src']
+        ]
+      }
+    }
   },
 )
