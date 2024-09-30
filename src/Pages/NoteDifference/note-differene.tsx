@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
-import { Tabs } from "../tabs";
-import { NoteIntervals } from "../note-intervals";
-import { TwoNotes } from "../two-notes";
-import style from './games.module.css';
-import { Piano } from "../piano";
+import { Fragment, useCallback, useState } from "react";
+import { Tabs } from "@/components/tabs";
+import { Piano } from "@/components/Piano";
+import { NoteIntervals } from "./components/note-intervals";
+import { TwoNotes } from "./components/two-notes";
+import style from './note-differene.module.css';
 
 const games = [
     {
@@ -17,7 +17,7 @@ const games = [
 ];
 
 
-export function Games() {
+export function NoteDiffernce() {
     const [tab, setTab] = useState<string>(games[0].name);
     const [hintVisible, setHintVisible] = useState(false);
     const [fileName, setFileName] = useState('');
@@ -31,10 +31,10 @@ export function Games() {
             <Tabs
                 tabList={games}
                 activeTab={tab}
-                onClick={(tabname) => setTab(tabname)}
+                onClick={(tabname: string) => setTab(tabname)}
             />
             {games.map(({ name, Component }) => (
-                <>
+                <Fragment key={name}>
                     {
                         tab === name &&
                         <Component
@@ -43,7 +43,7 @@ export function Games() {
                             setAudioFileName={handleSetFileName}
                         />
                     }
-                </>
+                </Fragment>
             ))}
             <Piano visible={hintVisible} />
         </div>

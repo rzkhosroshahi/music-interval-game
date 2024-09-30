@@ -33,6 +33,20 @@ input {
   background-color: transparent;
 }
 
+ul, ul li {
+  margin:0;
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+a {
+  color: #3c3c3c;
+  text-decoration: none;
+}
+a:hover {
+  color: #747bff;
+}
 #root {
   width: 100vw;
   height: 100vh;
@@ -42,6 +56,9 @@ input {
   :root {
     color: #dfdfdf;
     background-color: #3c3c3c;
+  }
+  a {
+    color: #dfdfdf;
   }
   a:hover {
     color: #747bff;
